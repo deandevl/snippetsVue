@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Simple Vue--component</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <style>
+    .bought_color {
+      color: red;
+    }
+    li {
+      cursor: pointer;
+    }
+  </style>
+
+  <body>
+    <div id="app">
+      <h3>Grocery list</h3>
+      <ul>
+        <grocery-item title="Bread"></grocery-item>
+        <grocery-item title="Milk"></grocery-item>
+      </ul>
+    </div>
+    <script>
+      const app = Vue.createApp({}).component('grocery-item',{
+        props: ['title'],
+        template: `
+          <li
+            @click="bought=!bought"
+            :class="{bought_color: bought}">{{title}}</li>
+        `,
+        data(){
+          return {
+            bought: false
+          }
+        }
+      })
+      const vm = app.mount('#app')
+    </script>
+  </body>
+</html>

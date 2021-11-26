@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Simple Vue--directives</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <script>
+    'use strict';
+    document.addEventListener("DOMContentLoaded", () => {
+      const root_component = {
+        data(){
+          return {
+            src: 'https://picsum.photos/200/300',
+            alt: 'Another Image',
+            link: 'http://google.com',
+            myText: 'Hello Girls',
+            myHtml: '<strong>Gary Jones</strong>',
+            name: 'Dean',
+            middleName: 'Paul',
+            user: ''
+          }
+        },
+        methods: {
+          update(){
+            setTimeout(()=> {
+              this.name = 'Rick'
+            },2000)
+          },
+          changeName(newName,event){
+            this.$refs.aname.style.color='red';
+            this.middleName = newName;
+            console.log(event);
+          },
+          message(){
+            return this.user === 'Rick' ? 'Welcome' : 'Not allowed';
+          }
+        }
+      }
+      const app = Vue.createApp(root_component)
+      const vm = app.mount('#app')
+    });
+  </script>
+  <body>
+  <div id="app">
+    <img :src="src" :alt="alt"/>
+    <hr>
+    <a :href="link">Go to google</a>
+    <hr>
+    <p v-text="myText"></p>
+    <hr>
+    <div v-html="myHtml"></div>
+    <hr>
+    <h2 ref="aname">{{name}}</h2>
+    <h2 v-once>{{name}}</h2>
+    {{update()}}
+    <hr>
+    <div @click="changeName('Kenneth',$event)">Click To Change Middle Name</div>
+    <div>{{middleName}}</div>
+    <hr>
+    <input v-model="user"/>
+    <div>
+      Name: {{message()}}
+    </div>
+  </div>
+  </body>
+</html>

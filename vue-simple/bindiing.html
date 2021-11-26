@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Simple Vue--binding</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <style>
+    #app {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .input_sec {
+      display: flex;
+      flex-direction: row;
+    }
+    input {
+      margin-left: 10px;
+      width: 100px;
+    }
+  </style>
+  <body>
+    <div id="app">
+      {{message}}
+      <section class="input_sec">
+        <label for="amessage">Enter a message: </label>
+        <input id="amessage" v-model='message'/>
+      </section>
+    </div>
+    <script>
+      'use strict';
+      // old Vue 2 way of doing Vue
+      /*const app = new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello World'
+        }
+      });*/
+      // Vue 3 way of creating an instance
+      const root_component = {
+        data(){
+          return {
+            message: 'Hello World'
+          }
+        }
+      }
+      const app = Vue.createApp(root_component)
+      // An application needs to be mounted into a DOM element.
+      // 'mount' does not return the application. Instead it returns
+      //   the root component instance.
+      // 'vm' is short for ViewModel to refer to the component instance.
+      const vm = app.mount('#app')
+      console.log(`Initial Message is: ${vm.message}`)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Simple Vue--component-separation</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script type="module" src="./SingleComment.js"></script>
+    <script type="module" src="./entry.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <single-comment v-for="comment in comments" :commentpost="comment"></single-comment>
+      </ul>
+      <label for="input_comment">New Comment</label>
+      <input id="input_comment" v-model="newComment" @keyup.enter="addComment" placeholder="Add a comment">
+    </div>
+  </body>
+</html>

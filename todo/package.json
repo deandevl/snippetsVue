@@ -1,0 +1,22 @@
+{
+  "name": "todo",
+  "version": "0.1.0",
+  "description": "A simple todo list using Vue 3",
+  "scripts": {
+    "parcel-devel": "parcel --dist-dir=dist-devl ./public/index.html",
+    "parcel-prod-optimize": "parcel build --no-source-maps --dist-dir=dist-prod ./public/index.html"
+  },
+  "keywords": [
+    "Vue"
+  ],
+  "author": "Rick Dean",
+  "license": "MIT",
+  "dependencies": {
+    "semantic-ui-css": "^2.4.1",
+    "vue": "^3.2.20"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.1",
+    "@parcel/transformer-vue": "^2.0.1"
+  }
+}
